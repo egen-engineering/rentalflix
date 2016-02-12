@@ -46,7 +46,6 @@ public class MovieService implements IFlix {
 
 	@Override
 	public Movie update(Movie movie) throws IllegalArgumentException {
-		// TODO Auto-generated method stub
 		for (Movie mov : movieCollection) {
 			if (mov.id == movie.id) {
 				mov = movie;
@@ -68,17 +67,26 @@ public class MovieService implements IFlix {
 		if (temp != null) {
 			movieCollection.remove(temp);
 			return temp;
-		}
-		else {
+		} else {
 			throw new IllegalArgumentException("Invalid Movie ID");
 		}
-		
+
 	}
 
 	@Override
-	public boolean rentMovie(int movieId, String user) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	public boolean rentMovie(int movieId, String user)
+			throws IllegalArgumentException {
 
+		for (Movie mov : movieCollection) {
+			if (mov.id == movieId) {
+				if (mov.rentedBy == null) {
+					mov.rentedBy = user;
+					return true;
+				} else {
+					throw new IllegalArgumentException("Already Rented");
+				}
+			}
+		}
+		throw new IllegalArgumentException("Invalid Movie ID");
+	}
 }
