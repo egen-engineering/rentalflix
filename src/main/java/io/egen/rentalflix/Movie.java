@@ -11,6 +11,16 @@ public class Movie {
 	public int getId() {
 		return id;
 	}
+	
+	public Movie(int id, String title, String language, String year,
+			String rentedBy) {
+		this.id = id;
+		this.title = title;
+		this.language = language;
+		this.year = year;
+		this.rentedBy = rentedBy;
+	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
