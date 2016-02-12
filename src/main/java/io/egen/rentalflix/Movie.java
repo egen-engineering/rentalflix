@@ -46,15 +46,27 @@ public class Movie {
         this.language = language;
     }
 
-    public float getRating() { return rating; }
+    public float getRating() {
+        return rating;
+    }
 
-    public void setRating(float rating) { this.rating = rating; }
+    public void setRating(float rating) {
+        this.rating = rating;
+    }
 
-    public boolean isRented() { return rented; }
+    public boolean isRented() {
+        return rented;
+    }
 
-    public void setRented(boolean rented) { this.rented = rented; }
+    public void setRented(boolean rented) {
+        this.rented = rented;
+    }
 
-    public String getRentedUser() { return rentedUser; }
+    public String getRentedUser() {
+        return rentedUser;
+    }
 
-    public void setRentedUser(String rentedUser) { this.rentedUser = rentedUser; }
+    public void setRentedUser(String rentedUser) {
+        this.rentedUser = rentedUser;
+    }
 }
