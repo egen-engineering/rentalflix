@@ -1,5 +1,8 @@
 package io.egen.rentalflix;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -7,11 +10,19 @@ import java.util.List;
  * You can use any Java collection type to store movies
  */
 public class MovieService implements IFlix {
-
+	HashSet<Movie> movieCollection = new HashSet<>();
+	
+	 public MovieService() {
+		 Collections.synchronizedSet(movieCollection);
+	}
+	
 	@Override
 	public List<Movie> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Movie> movielist = new ArrayList<Movie>();
+		for (Movie mov:movieCollection){
+			movielist.add(mov);
+		}
+		return movielist;
 	}
 
 	@Override
