@@ -11,6 +11,7 @@ import java.util.List;
  */
 public class MovieService implements IFlix {
 	HashSet<Movie> movieCollection = new HashSet<>();
+	int count;
 	
 	 public MovieService() {
 		 Collections.synchronizedSet(movieCollection);
@@ -37,8 +38,9 @@ public class MovieService implements IFlix {
 
 	@Override
 	public Movie create(Movie movie) {
-		// TODO Auto-generated method stub
-		return null;
+		movie.id=++count;
+		movieCollection.add(movie);
+		return movie;
 	}
 
 	@Override
