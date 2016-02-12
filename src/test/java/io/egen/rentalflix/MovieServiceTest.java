@@ -5,4 +5,8 @@ package io.egen.rentalflix;
  */
 public class MovieServiceTest {
 
+    public static void main(String arg[]) {
+        MovieService testObject = new MovieService();
+    }
+
 }
