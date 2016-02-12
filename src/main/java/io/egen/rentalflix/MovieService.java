@@ -27,8 +27,12 @@ public class MovieService implements IFlix {
 
 	@Override
 	public List<Movie> findByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Movie> movielist = new ArrayList<Movie>();
+		for (Movie mov:movieCollection){
+			if(mov.title.equalsIgnoreCase(name))
+				movielist.add(mov);
+		}
+		return movielist;
 	}
 
 	@Override
