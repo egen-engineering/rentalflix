@@ -6,21 +6,21 @@ import java.util.HashSet;
 import java.util.List;
 
 /**
- * Service implementing IFlix interface
- * You can use any Java collection type to store movies
+ * Service implementing IFlix interface You can use any Java collection type to
+ * store movies
  */
 public class MovieService implements IFlix {
-	HashSet<Movie> movieCollection = new HashSet<>();
+	HashSet<Movie> movieCollection;
 	int count;
-	
-	 public MovieService() {
-		 Collections.synchronizedSet(movieCollection);
+
+	public MovieService() {
+		Collections.synchronizedSet(movieCollection);
 	}
-	
+
 	@Override
 	public List<Movie> findAll() {
 		List<Movie> movielist = new ArrayList<Movie>();
-		for (Movie mov:movieCollection){
+		for (Movie mov : movieCollection) {
 			movielist.add(mov);
 		}
 		return movielist;
@@ -29,8 +29,8 @@ public class MovieService implements IFlix {
 	@Override
 	public List<Movie> findByName(String name) {
 		List<Movie> movielist = new ArrayList<Movie>();
-		for (Movie mov:movieCollection){
-			if(mov.title.equalsIgnoreCase(name))
+		for (Movie mov : movieCollection) {
+			if (mov.title.equalsIgnoreCase(name))
 				movielist.add(mov);
 		}
 		return movielist;
@@ -38,23 +38,41 @@ public class MovieService implements IFlix {
 
 	@Override
 	public Movie create(Movie movie) {
-		movie.id=++count;
+		movie.id = ++count;
 		movieCollection.add(movie);
 		return movie;
-		
-		
+
 	}
 
 	@Override
-	public Movie update(Movie movie) {
+	public Movie update(Movie movie) throws IllegalArgumentException {
 		// TODO Auto-generated method stub
-		return null;
+		for (Movie mov : movieCollection) {
+			if (mov.id == movie.id) {
+				mov = movie;
+				return mov;
+			}
+		}
+		throw new IllegalArgumentException("Invalid Movie ID");
 	}
 
 	@Override
-	public Movie delete(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Movie delete(int id) throws IllegalArgumentException {
+		Movie temp = null;
+		for (Movie mov : movieCollection) {
+			if (mov.id == id) {
+				temp = mov;
+				break;
+			}
+		}
+		if (temp != null) {
+			movieCollection.remove(temp);
+			return temp;
+		}
+		else {
+			throw new IllegalArgumentException("Invalid Movie ID");
+		}
+		
 	}
 
 	@Override
