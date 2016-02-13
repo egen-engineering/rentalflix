@@ -10,17 +10,17 @@ import java.util.List;
  * store movies
  */
 public class MovieService implements IFlix {
-	HashSet<Movie> movieCollection;
-	int count;
+	HashSet<Movie> moveStore;
+	int movieID = 0;
 
 	public MovieService() {
-		Collections.synchronizedSet(movieCollection);
+		Collections.synchronizedSet(moveStore);
 	}
 
 	@Override
 	public List<Movie> findAll() {
 		List<Movie> movielist = new ArrayList<Movie>();
-		for (Movie mov : movieCollection) {
+		for (Movie mov : moveStore) {
 			movielist.add(mov);
 		}
 		return movielist;
@@ -29,7 +29,7 @@ public class MovieService implements IFlix {
 	@Override
 	public List<Movie> findByName(String name) {
 		List<Movie> movielist = new ArrayList<Movie>();
-		for (Movie mov : movieCollection) {
+		for (Movie mov : moveStore) {
 			if (mov.title.equalsIgnoreCase(name))
 				movielist.add(mov);
 		}
@@ -38,15 +38,15 @@ public class MovieService implements IFlix {
 
 	@Override
 	public Movie create(Movie movie) {
-		movie.id = ++count;
-		movieCollection.add(movie);
+		movie.id = ++movieID;
+		moveStore.add(movie);
 		return movie;
 
 	}
 
 	@Override
-	public Movie update(Movie movie) throws IllegalArgumentException {
-		for (Movie mov : movieCollection) {
+	public Movie update(Movie movie){
+		for (Movie mov : moveStore) {
 			if (mov.id == movie.id) {
 				mov = movie;
 				return mov;
@@ -56,16 +56,16 @@ public class MovieService implements IFlix {
 	}
 
 	@Override
-	public Movie delete(int id) throws IllegalArgumentException {
+	public Movie delete(int id){
 		Movie temp = null;
-		for (Movie mov : movieCollection) {
+		for (Movie mov : moveStore) {
 			if (mov.id == id) {
 				temp = mov;
 				break;
 			}
 		}
 		if (temp != null) {
-			movieCollection.remove(temp);
+			moveStore.remove(temp);
 			return temp;
 		} else {
 			throw new IllegalArgumentException("Invalid Movie ID");
@@ -74,10 +74,8 @@ public class MovieService implements IFlix {
 	}
 
 	@Override
-	public boolean rentMovie(int movieId, String user)
-			throws IllegalArgumentException {
-
-		for (Movie mov : movieCollection) {
+	public boolean rentMovie(int movieId, String user){
+		for (Movie mov : moveStore) {
 			if (mov.id == movieId) {
 				if (mov.rentedBy == null) {
 					mov.rentedBy = user;
