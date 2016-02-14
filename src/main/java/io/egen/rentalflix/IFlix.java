@@ -1,4 +1,4 @@
-package io.egen.rentalflix;
+package NetFlix;
 
 import java.util.List;
 
