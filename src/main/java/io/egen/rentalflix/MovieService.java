@@ -1,13 +1,17 @@
 package io.egen.rentalflix;
 
+<<<<<<< HEAD
 import java.util.List;
 
+=======
+>>>>>>> c86c9c9649d4e209f3a77a0a6255516e0870fdc0
 /**
  * Service implementing IFlix interface
  * You can use any Java collection type to store movies
  */
 public class MovieService implements IFlix {
 
+<<<<<<< HEAD
     @Override
     public List<Movie> findAll() {
         return null;
@@ -37,4 +41,6 @@ public class MovieService implements IFlix {
     public boolean rentMovie(int movieId, String user) {
         return false;
     }
+=======
+>>>>>>> c86c9c9649d4e209f3a77a0a6255516e0870fdc0
 }
