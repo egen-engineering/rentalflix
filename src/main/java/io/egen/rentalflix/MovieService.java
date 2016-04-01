@@ -1,34 +1,39 @@
 package io.egen.rentalflix;
 
-<<<<<<< HEAD
+
+import java.util.ArrayList;
 import java.util.List;
 
-=======
->>>>>>> c86c9c9649d4e209f3a77a0a6255516e0870fdc0
+
 /**
  * Service implementing IFlix interface
  * You can use any Java collection type to store movies
  */
 public class MovieService implements IFlix {
 
-<<<<<<< HEAD
+    private List<Movie> list = new ArrayList<>();
     @Override
     public List<Movie> findAll() {
-        return null;
+        return list;
     }
 
     @Override
     public List<Movie> findByName(String name) {
-        return null;
+
+      //  if(list.contains())
+        return list;
     }
 
     @Override
     public Movie create(Movie movie) {
-        return null;
+        list.add(movie);
+        return list.get(0);
+
+
     }
 
     @Override
-    public Movie update(Movie movie) {
+    public Movie update(Movie movie){
         return null;
     }
 
@@ -39,8 +44,8 @@ public class MovieService implements IFlix {
 
     @Override
     public boolean rentMovie(int movieId, String user) {
+
         return false;
     }
-=======
->>>>>>> c86c9c9649d4e209f3a77a0a6255516e0870fdc0
+
 }
