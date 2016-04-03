@@ -7,20 +7,38 @@ package io.egen.rentalflix;
 public class Movie {
 	//POJO IMPLEMENTATION GOES HERE
 
-    private String title;
+
     private int id;
-    //"Title": "Avengers: Age of Ultron",
+    private String title;
     private String year;
-    private String released;
-    private boolean isRent;
+    private String language;
+    private boolean isRent=false;
+
+    public Movie(int id, String title, String year, String language) {
+        this.id = id;
+        this.title = title;
+        this.year = year;
+        this.language = language;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
 
     public boolean isRent() {
         return isRent;
+
     }
 
     public void setRent(boolean rent) {
         isRent = rent;
     }
+
+
 
     public String getTitle() {
         return title;
@@ -46,21 +64,15 @@ public class Movie {
         this.year = year;
     }
 
-    public String getReleased() {
-        return released;
-    }
-
-    public void setReleased(String released) {
-        this.released = released;
-    }
 
     @Override
     public String toString() {
         return "Movie{" +
-                "title='" + title + '\'' +
-                ", id=" + id +
+                "id=" + id +
+                ", title='" + title + '\'' +
                 ", year='" + year + '\'' +
-                ", released='" + released + '\'' +
+                ", language='" + language + '\'' +
+                ", isRent=" + isRent +
                 '}';
     }
 }

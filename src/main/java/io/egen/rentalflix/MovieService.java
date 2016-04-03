@@ -11,41 +11,69 @@ import java.util.List;
  */
 public class MovieService implements IFlix {
 
-    private List<Movie> list = new ArrayList<>();
+    private List<Movie> movieList = new ArrayList<>();
     @Override
     public List<Movie> findAll() {
-        return list;
+        return movieList;
     }
 
     @Override
     public List<Movie> findByName(String name) {
 
       //  if(list.contains())
-        return list;
+        List<Movie> mList = new ArrayList<>();
+        if(movieList.size()==0){
+            return null;
+        }
+        for(Movie movie: movieList){
+            if(movie.getTitle().contains(name)){
+                mList.add(movie);
+            }
+        }
+
+        return mList;
     }
 
     @Override
     public Movie create(Movie movie) {
-        list.add(movie);
-        return list.get(0);
+        movieList.add(movie);
+        return movie;
 
 
     }
 
     @Override
     public Movie update(Movie movie){
-        return null;
+
+        if(movieList.contains(movie)){
+            movie.setId(movie.getId());
+            movieList.add(movie);
+        }
+        else{
+            throw new IllegalArgumentException("Update Error");
+        }
+        return movie;
     }
 
     @Override
     public Movie delete(int id) {
-        return null;
+        Movie movie = movieList.get(id);
+        if(movie == null){
+            throw new IllegalArgumentException("Delete Error");
+        }
+        movieList.remove(movie);
+        return movie;
     }
 
     @Override
     public boolean rentMovie(int movieId, String user) {
 
-        return false;
+        Movie movie = movieList.get(movieId);
+        if(movie.isRent()){
+            throw new IllegalArgumentException("Rent Movie Error");
+        }
+        movie.setRent(true);
+        return true;
     }
 
 }
