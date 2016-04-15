@@ -8,4 +8,4 @@ Java assessment for new training candidates.
 1. Use any Java collection type in MovieService to store movies.
 1. Write JUnit test cases for MovieService in MovieServiceTest file.
 1. Keep in mind about possibilities of concurrent access to MovieService.
-1. Once completed, DIRECT MESSAGE Praveen on slack with the link of the repo.
+1. Once completed, send the link of your github repo to the recruiter.
